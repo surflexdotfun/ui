@@ -13,7 +13,7 @@ export default function TextButton({
   children,
   disabled,
 }: TextButtonProps) {
-  const audioRef = useRef(new Audio("/game-start.wav"));
+  const audioRef = useRef(new Audio("/game-start.mp3"));
   const [clicked, setClicked] = useState(false);
 
   const handleMouseDown = () => setClicked(true);
