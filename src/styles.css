@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes retro-blink-half {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes retro-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes retro-blink-coin {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.retro-blink-half {
+  animation: retro-blink-half 1.4s step-start infinite;
+}
+
+.retro-blink {
+  animation: retro-blink 1s step-start infinite;
+}
+
+.retro-blink-coin {
+  animation: retro-blink-coin 1.8s step-start infinite;
+}
+
+.arrow-container:hover .arrow-button {
+  transform: translateY(4px);
+  color: #DCDCDC;
+}
+
+.arrow-container:active .arrow-button {
+  transform: translateY(0px);
+  color: #DCDCDC;
+}
+
+.left-arrow-button {
+  transform: rotate(90deg);
+}
+
+.arrow-container:hover .left-arrow-button {
+  transform: rotate(90deg) translateX(-4px);
+  color: #DCDCDC;
+}
+
+.arrow-container:active .left-arrow-button {
+  transform: rotate(90deg) translateX(0px);
+  color: #DCDCDC;
+}
+
+
+.right-arrow-button {
+  transform: rotate(-90deg);
+}
+
+.arrow-container:hover .right-arrow-button {
+  transform: rotate(-90deg) translateX(4px);
+  color: #DCDCDC;
+}
+
+.arrow-container:active .right-arrow-button {
+  transform: rotate(-90deg) translateX(0px);
+  color: #DCDCDC;
+}
+
+.no-drag {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.capitalize-first::first-letter {
+  text-transform: uppercase;
+}
