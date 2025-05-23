@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/useIsMobile";
 import { useUser } from "../hooks/useUser";
 import { UserStatus } from "../types/users";
+import { useToast } from "../hooks/useToast";
 
 import BackgroundGIFs from "./BackgroundGIFs";
 import CTA from "./CTA";
@@ -17,10 +18,11 @@ export default function Hero() {
   const { status, address, userInfo } =
     useUser();
 
-  const { participateRound, isLoading, isFinished } = useParticipate();
+  const { participateRound, isLoading, isFinished, error } = useParticipate();
 
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   // Modals
   const [isInsertCoinModalOpen, setIsInsertCoinModalOpen] =
@@ -50,6 +52,7 @@ export default function Hero() {
       // participate tx 를 보낸다.
     } catch (error) {
       console.error("❌ Error:", error);
+
     }
   };
 
@@ -65,6 +68,13 @@ export default function Hero() {
       setIsLoadingModalOpen(false);
     }
   }, [isFinished]);
+
+  useEffect(() => {
+    if (error) {
+      setIsLoadingModalOpen(false);
+      showToast("error", "Transaction failed", [error]);
+    }
+  }, [error]);
 
   return (
     <div className="relative w-full flex flex-col items-center justify-center sm:p-4 text-center overflow-x-hidden overflow-y-hidden">
